@@ -1,3 +1,30 @@
+if game.Players.LocalPlayer.PlayerGui:FindFirstChild("METAB GUI ") then
+	game.Players.LocalPlayer.PlayerGui:FindFirstChild("METAB GUI "):Destroy()
+end
+
+
+local Bandages = Instance.new("Folder")
+Bandages.Parent = game.Workspace
+Bandages.Name = "BandageSpawn"
+
+local SledgeHammers = Instance.new("Folder")
+SledgeHammers.Parent = game.Workspace
+SledgeHammers.Name = "SledgeHammerSpawn"
+
+function PrepareMETAB()
+	for i, value in pairs(game.Workspace:GetChildren()) do
+		if value.Name == "Bandage" then
+			value.Parent = BandageSpawn
+		end
+		if value.Name == "SledgeHammer" then
+			value.Parent = SledgeHammerSpawn
+		end
+	end
+	
+end
+
+--PrepareMETAB()
+
 local METABGUI = Instance.new("ScreenGui")
 local ImageLabel = Instance.new("ImageLabel")
 local Button7ColourSwipe = Instance.new("ImageButton")
@@ -94,6 +121,8 @@ local BtnText_36 = Instance.new("TextLabel")
 local Button_32 = Instance.new("ImageButton")
 local BtnText_37 = Instance.new("TextLabel")
 local ImageButton = Instance.new("ImageButton")
+local BtnText_38 = Instance.new("TextLabel")
+local Button_33 = Instance.new("ImageButton")
 
 --Properties:
 
@@ -503,7 +532,7 @@ BtnText_11.BorderSizePixel = 0
 BtnText_11.Position = UDim2.new(0.498111337, 0, 0.482122391, 0)
 BtnText_11.Size = UDim2.new(0.808755696, -5, 0.794257462, -5)
 BtnText_11.Font = Enum.Font.GothamBlack
-BtnText_11.Text = "GIVE PISTOL"
+BtnText_11.Text = "GIVE FLAMETHROWER"
 BtnText_11.TextColor3 = Color3.fromRGB(255, 255, 255)
 BtnText_11.TextScaled = true
 BtnText_11.TextSize = 14.000
@@ -896,7 +925,7 @@ BtnText_25.BorderSizePixel = 0
 BtnText_25.Position = UDim2.new(0.497999996, 0, 0.481999993, 0)
 BtnText_25.Size = UDim2.new(0.927069128, -5, 1.02472496, -5)
 BtnText_25.Font = Enum.Font.GothamBlack
-BtnText_25.Text = "UPGRADE ALL (MONKE)"
+BtnText_25.Text = "REMOVE MESH"
 BtnText_25.TextColor3 = Color3.fromRGB(255, 255, 255)
 BtnText_25.TextScaled = true
 BtnText_25.TextSize = 14.000
@@ -1004,7 +1033,7 @@ BtnText_29.BorderSizePixel = 0
 BtnText_29.Position = UDim2.new(0.498111337, 0, 0.482122391, 0)
 BtnText_29.Size = UDim2.new(0.808755696, -5, 0.794257462, -5)
 BtnText_29.Font = Enum.Font.GothamBlack
-BtnText_29.Text = "KING ICON"
+BtnText_29.Text = "A POSE"
 BtnText_29.TextColor3 = Color3.fromRGB(255, 255, 255)
 BtnText_29.TextScaled = true
 BtnText_29.TextSize = 14.000
@@ -1232,6 +1261,33 @@ ImageButton.BackgroundTransparency = 1.000
 ImageButton.Position = UDim2.new(0.416326493, 0, 0, 0)
 ImageButton.Size = UDim2.new(0, 123, 0, 60)
 ImageButton.Image = "http://www.roblox.com/asset/?id=7529900564"
+
+BtnText_38.Name = "BtnText"
+BtnText_38.Parent = Button_33
+BtnText_38.AnchorPoint = Vector2.new(0.5, 0.5)
+BtnText_38.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+BtnText_38.BackgroundTransparency = 1.000
+BtnText_38.BorderSizePixel = 0
+BtnText_38.Position = UDim2.new(0.5, 0, 0.481999993, 0)
+BtnText_38.Size = UDim2.new(0.808755696, -5, 0.794257462, -5)
+BtnText_38.Font = Enum.Font.GothamBlack
+BtnText_38.Text = "SHOW KILL TRIGGERS"
+BtnText_38.TextColor3 = Color3.fromRGB(255, 255, 255)
+BtnText_38.TextScaled = true
+BtnText_38.TextSize = 14.000
+BtnText_38.TextWrapped = true
+
+Button_33.Name = "Button "
+Button_33.Parent = MISCFRAME
+Button_33.AnchorPoint = Vector2.new(1, 1)
+Button_33.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Button_33.BackgroundTransparency = 1.000
+Button_33.Position = UDim2.new(0.880999982, 0, 0.740999997, 0)
+Button_33.Size = UDim2.new(0.385020077, 0, 0.0737401098, 0)
+Button_33.Image = "rbxassetid://2790382281"
+Button_33.ImageColor3 = Color3.fromRGB(19, 143, 143)
+Button_33.ScaleType = Enum.ScaleType.Slice
+Button_33.SliceCenter = Rect.new(4, 4, 252, 252)
 
 -- Scripts:
 
@@ -1615,7 +1671,7 @@ local function PZRWM_fake_script() -- Button_7.METAB SCRIPT
 
 	script.Parent.MouseButton1Click:Connect(function()
 	
-		local clickdetector = workspace.PistolSpawn.ClickDetector
+		local clickdetector = workspace.Flamethrower.ClickDetector
 	
 		fireclickdetector(clickdetector)
 		
@@ -1758,7 +1814,7 @@ local function YQSLECM_fake_script() -- Button_15.METAB SCRIPT
 
 	
 	
-	script.Parent.MouseButton1Down:connect(function()
+	script.Parent.MouseButton1Down:Connect(function()
 	
 		local clickdetector = workspace.FireAxe.ClickDetector
 	
@@ -1832,6 +1888,8 @@ local function VSAAFKP_fake_script() -- Button_18.METAB SCRIPT
 	script.Parent.MouseButton1Down:connect(function()
 	
 		local clickdetector = workspace.Machete.ClickDetector
+
+		print(clickdetector)
 	
 		fireclickdetector(clickdetector)
 		
@@ -1997,13 +2055,28 @@ local function DPRME_fake_script() -- Button_20.METAB SCRIPT
 
 	script.Parent.MouseButton1Down:connect(function()
 	
-		game.Players.LocalPlayer.Character.Upgrades.Damage.Value = 5
-		game.Players.LocalPlayer.Character.Upgrades.HP.Value = 5
-		game.Players.LocalPlayer.Character.Upgrades.Regen.Value = 5
-		game.Players.LocalPlayer.Character.Upgrades.Penetrate.Value = 5
-		game.Players.LocalPlayer.Character.Upgrades.System.Value = 5
-		game.Players.LocalPlayer.Character.Upgrades.LifeSteal.Value = 5
-		game.Players.LocalPlayer.Character.Upgrades.Status.Value = 5
+		local tool = game.Players.LocalPlayer.Character:FindFirstChildWhichIsA("Tool")
+
+		if tool then
+			local toolMesh = tool:FindFirstChild("Mesh")
+			if toolMesh then
+				toolMesh:Destroy()
+			else
+				toolMesh = tool:FindFirstChild("SpecialMesh")
+				if toolMesh then
+					toolMesh:Destroy()
+				else
+					toolMesh = tool.Handle:FindFirstChild("Mesh")
+					if toolMesh then
+						toolMesh:Destroy()
+					else
+						warn("Cannot find the mesh for the item")
+					end
+				end	
+			end
+		else
+			warn("Please equip a tool before you start")
+		end
 	end)
 	
 	
@@ -2048,11 +2121,11 @@ local function JBLAR_fake_script() -- Button_23.METAB SCRIPT
 	
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-95.967239379883, 3.9999992847443, 75.780075073242)
 		
-			end)
+	end)
 	
 	
 	
-	
+
 	
 end
 coroutine.wrap(JBLAR_fake_script)()
@@ -2061,7 +2134,28 @@ local function NIMMCI_fake_script() -- Button_24.METAB SCRIPT
 
 	script.Parent.MouseButton1Down:connect(function()
 	
-		game.Players.LocalPlayer.Character.Head:FindFirstChild("KingIcon").Enabled = true
+		local APose = "http://www.roblox.com/asset/?id=13089543399"
+
+		local player = game.Players.LocalPlayer
+		local character = player.Character
+		local animate = character:WaitForChild("Animate")
+
+		animate.idle.Animation1.AnimationId = APose
+		animate.idle.Animation2.AnimationId = APose
+
+		animate.walk.WalkAnim.AnimationId = APose
+
+		animate.run.RunAnim.AnimationId = APose
+
+		animate.jump.JumpAnim.AnimationId = APose
+
+		animate.climb.ClimbAnim.AnimationId = APose
+
+		animate.toolnone.ToolNoneAnim.AnimationId = APose
+
+		animate.fall.FallAnim.AnimationId = APose
+
+		animate.sit.SitAnim.AnimationId = APose
 	end)
 	
 	
@@ -2094,7 +2188,7 @@ local function NKVBU_fake_script() -- Button_26.METAB SCRIPT
 
 	script.Parent.MouseButton1Down:connect(function()
 	
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-107.15635681152, -7.9999942779541, 422.05758666992)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1.38626, -2.99999, 478.632)
 	end)
 	
 	
@@ -2109,80 +2203,9 @@ local function DUQSBT_fake_script() -- Button_27.METAB SCRIPT
 	script.Parent.MouseButton1Down:connect(function()
 	
 		LocalPlayer = game:GetService("Players").LocalPlayer
-		LocalPlayer.Character.Humanoid:MoveTo(LocalPlayer.Character.HumanoidRootPart.Position + LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector * 10)
-		LocalPlayer.Character.Humanoid.Jump = true
-		wait(0.5)
-		function Iterate(instance, func)
-			for i, v in next, instance:GetChildren() do
-				func(v)
-			end
-		end
-		limbs = {
-			["Right Leg"] = true;
-			["Right Arm"] = true;
-			["Left Leg"] = true;
-			["Left Arm"] = true;
-		}
-		Iterate(LocalPlayer.Character, function(v)
-			if v:IsA("BasePart") then
-				local attachment = Instance.new("Attachment")
-				attachment.Parent = v
-				attachment.Name = (v.Name .. "[Attachment]")
-				if limbs[v.Name] then
-					attachment.Position = Vector3.new(0, v.Size.Y/2, 0)
-				elseif v.Name == "Head" then
-					attachment.Position = Vector3.new(0, -v.Size.Y/2, 0)
-					attachment.Rotation = Vector3.new(0, 0, -90)
-				end
-			end
-		end)
-		local leftLegAttachment = Instance.new("Attachment")
-		leftLegAttachment.Position = Vector3.new(-.5, -1, 0)
-		leftLegAttachment.Rotation = Vector3.new(0, -90, 0)
-		local rightLegAttachment = Instance.new("Attachment")
-		rightLegAttachment.Position = Vector3.new(.5, -1, 0)
-		rightLegAttachment.Rotation = Vector3.new(0, -90, 0)
-		rightLegAttachment.Parent, leftLegAttachment.Parent = LocalPlayer.Character.Torso, LocalPlayer.Character.Torso
-		jointAttachments = {
-			['Head'] = {
-				['Attachment0'] = LocalPlayer.Character.Torso['NeckAttachment'];
-				['Attachment1'] = LocalPlayer.Character.Head['Head[Attachment]'];
-			};
-			['Left Arm'] = {
-				['Attachment0'] = LocalPlayer.Character.Torso['LeftCollarAttachment'];
-				['Attachment1'] = LocalPlayer.Character['Left Arm']['Left Arm[Attachment]'];
-			};
-			['Right Arm'] = {
-				['Attachment0'] = LocalPlayer.Character.Torso['RightCollarAttachment'];
-				['Attachment1'] = LocalPlayer.Character['Right Arm']['Right Arm[Attachment]'];
-			};
-			['Left Leg'] = {
-				['Attachment0'] = leftLegAttachment;
-				['Attachment1'] = LocalPlayer.Character['Left Leg']['Left Leg[Attachment]'];
-			};
-			['Right Leg'] = {
-				['Attachment0'] = rightLegAttachment;
-				['Attachment1'] = LocalPlayer.Character['Right Leg']['Right Leg[Attachment]'];
-			};
-		}
-		LocalPlayer.Character.Humanoid.PlatformStand = true
-		Iterate(LocalPlayer.Character, function(v)
-			if v:IsA("BasePart") then
-				if jointAttachments[v.Name] then
-					local ballSocketJoint = Instance.new("BallSocketConstraint")
-					ballSocketJoint.Parent = v
-					ballSocketJoint.Radius = 0.15
-					ballSocketJoint.Attachment0, ballSocketJoint.Attachment1 = jointAttachments[v.Name]['Attachment0'], jointAttachments[v.Name]['Attachment1']
-				end
-			end
-		end)
-		Iterate(LocalPlayer.Character.Torso, function(v)
-			if v:IsA("Motor") then
-				v:Remove()
-			end
+		LocalPlayer.Character.Humanoid.Health = 0
 	end)
-	end)
-	
+
 end
 coroutine.wrap(DUQSBT_fake_script)()
 local function BLYT_fake_script() -- Button_28.METAB SCRIPT 
@@ -2191,17 +2214,17 @@ local function BLYT_fake_script() -- Button_28.METAB SCRIPT
 	
 	
 	script.Parent.MouseButton1Down:connect(function()
-	
-	
-				for i,v in pairs(game.Workspace.Regen:GetChildren()) do 
-					if v.Name == "InfectPart" then 
-						for a,b in pairs(v:GetChildren()) do
-							b:Destroy() 
-					
+
+		for i,v in pairs(game.Workspace.Regen:GetChildren()) do 
+			if v.Name == "InfectPart" or v.Name == "InfectPartBanana" then 
+				for a,b in pairs(v:GetChildren()) do
+					b:Destroy() 	
 				end
 			end
+
 		end
-		end)
+
+	end)
 	
 	
 	
@@ -2512,3 +2535,22 @@ local function RUBX_fake_script() -- ImageButton.LocalScript
 	
 end
 coroutine.wrap(RUBX_fake_script)()
+local function PQIT_fake_script() -- Button_33. SHOW KILL TRIGGERS
+	local script = Instance.new('LocalScript', Button_33)
+
+	script.Parent.MouseButton1Down:connect(function()
+		for i, value in pairs(game.Workspace:GetChildren()) do
+			if value.Name == "Killlll" then
+				if value.Transparency == 0.3 then
+					value.Transparency = 1
+				else
+					value.Transparency = 0.95
+				end
+				value.Material = Enum.Material.Neon	
+			end
+		end
+		
+	end)
+
+end
+coroutine.wrap(PQIT_fake_script)()
